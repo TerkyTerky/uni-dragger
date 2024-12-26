@@ -1,5 +1,5 @@
 # uni-dragger
-适用于`uniapp`小程序环境下的拖拽组件，基于`uniapp`的组件`movable-area`和`movable-view`
+适用于`uniapp`小程序环境下的四宫格图片拖拽组件，基于`uniapp`的组件`movable-area`和`movable-view`
 
 ![效果展示图](./giphy.gif)
 
