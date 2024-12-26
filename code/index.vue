@@ -6,7 +6,7 @@
         @click="itemClick(index)" :animation="false"
         :class="{ 'dragging': dragState.draggingIndex === index, 'highlight': dragState.highlightIndex === index && dragState.draggingIndex !== index }">
         <image :src="item.src" mode="aspectFill" :class="uploaderImageLoading && 'uploader-image-loading'" />
-        <CustomButton v-if="item.showButton" class="re-choose" icon="compare" type="ghost" size="xhs-mini2"
+        <CustomButton v-if="item.showButton" class="re-choose" icon="compare" type="ghost"
           :iconSize="13" :onClick="() => buttonClick(index)">替换照片
         </CustomButton>
       </movable-view>
@@ -21,7 +21,6 @@
 import { getCurrentInstance, nextTick, onMounted, ref, PropType, computed, reactive } from 'vue';
 import CustomButton from '@/components/button/index.vue';
 import CustomToast from '@/components/custom-toast';
-import { clickTracker } from '@/utils/tracker';
 import { selectImgAndUpload, upload } from '@/utils/upload'
 import useTaskStore from '@/store/task';
 import { drawImage, IDrag, aspectFill, setCanvasToTemp, swapItem, itemMatch, IDragState } from './utils';
@@ -175,8 +174,6 @@ const itemClick = (index: number) => {
   }))
 }
 const buttonClick = async (index: number) => {
-  // 打点
-  clickTracker('home.reSelectBtn')
   await multiReSelect()
   images.value[index].src = taskStore.rowImageFileMultiBackupPath[taskStore.selectTemplateId]
 }
